@@ -1,0 +1,8 @@
+/vendor/
+/.idea/.gitignore
+/.idea/codeception.xml
+/.idea/modules.xml
+/.idea/php.xml
+/.idea/phpnative.iml
+/.idea/phpspec.xml
+/.idea/phpunit.xml

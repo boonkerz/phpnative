@@ -1,0 +1,21 @@
+#!/usr/bin/php
+<?php
+
+use PHPNative\Lifecycle\Lifecycle;
+
+if(php_sapi_name() !== 'cli') {
+    exit;
+}
+
+require __DIR__ . '/../vendor/autoload.php';
+
+final class Main extends Lifecycle
+{
+    public function __construct()
+    {
+        parent::__construct(new \PHPNative\App(__DIR__));
+        $this->show(\Example\Controller\AppController::class);
+    }
+}
+
+(new Main())->run();

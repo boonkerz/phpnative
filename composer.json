@@ -1,0 +1,28 @@
+{
+  "name": "boonkerz/phpnative",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Thomas Peterson",
+      "email": "info@thomas-peterson.de"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "PHPNative\\": "src/",
+      "Example\\": "example/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "PHPNative\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=8.1",
+    "ext-ffi": "*",
+    "ext-parallel": "*",
+    "serafim/ffi-sdl-ttf": "*",
+    "php-di/php-di": "^7"
+  }
+}
