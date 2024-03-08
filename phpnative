@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+use PHPNative\PHPNative;
+
+require_once getcwd() . '/vendor/autoload.php';
+
+PHPNative::boot(getcwd())->gui()->run();
+
+exit;

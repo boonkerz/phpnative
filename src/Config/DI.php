@@ -3,9 +3,8 @@
 namespace PHPNative\Config;
 
 use DI\Container;
-use DI\ContainerBuilder;
-use PHPNative\Loop\EventLoop;
 use PHPNative\Loop\LoopInterface;
+use PHPNative\Loop\OrderedEventLoop;
 
 class DI
 {
@@ -16,6 +15,6 @@ class DI
 
     public function bindDefault(): void
     {
-        $this->container->set(LoopInterface::class, \DI\create(EventLoop::class));
+        $this->container->set(LoopInterface::class, \DI\create(OrderedEventLoop::class));
     }
 }

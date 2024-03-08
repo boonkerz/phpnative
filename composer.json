@@ -1,6 +1,5 @@
 {
   "name": "boonkerz/phpnative",
-  "type": "library",
   "authors": [
     {
       "name": "Thomas Peterson",
@@ -10,7 +9,7 @@
   "autoload": {
     "psr-4": {
       "PHPNative\\": "src/",
-      "Example\\": "example/"
+      "App\\": "app/"
     }
   },
   "autoload-dev": {
@@ -19,10 +18,9 @@
     }
   },
   "require": {
-    "php": ">=8.1",
-    "ext-ffi": "*",
+    "php": ">=8.2",
+    "ext-sdl": "*",
     "ext-parallel": "*",
-    "serafim/ffi-sdl-ttf": "*",
     "php-di/php-di": "^7"
   }
 }

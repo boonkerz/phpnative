@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace PHPNative\Loop;
 
-class EventLoop implements LoopInterface
+abstract class EventLoop implements LoopInterface
 {
 
     protected bool $running = false;
@@ -17,25 +17,12 @@ class EventLoop implements LoopInterface
         try {
             $this->running = true;
 
-            //$this->execute($frameRate, $updateRate);
+            $this->execute($frameRate, $updateRate);
         } finally {
             //$this->driver->free();
 
         }
     }
 
-    public function pause(): void
-    {
-        // TODO: Implement pause() method.
-    }
-
-    public function resume(): void
-    {
-        // TODO: Implement resume() method.
-    }
-
-    public function stop(): void
-    {
-        // TODO: Implement stop() method.
-    }
+    abstract protected function execute(int $frameRate, int $updateRate): void;
 }

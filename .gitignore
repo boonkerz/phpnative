@@ -6,3 +6,5 @@
 /.idea/phpnative.iml
 /.idea/phpspec.xml
 /.idea/phpunit.xml
+/.idea/deployment.xml
+/.idea/vcs.xml
