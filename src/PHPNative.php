@@ -3,8 +3,11 @@ declare(strict_types=1);
 
 namespace PHPNative;
 
-use DI\Container;
+use PHPNative\Application\Application;
+use PHPNative\Application\GuiApplication;
 use PHPNative\Application\Kernel;
+use PHPNative\Container\Container;
+
 final readonly class PHPNative
 {
     public Container $container;
@@ -18,6 +21,7 @@ final readonly class PHPNative
     {
         $kernel = new Kernel(
             root: $root,
+            appConfig: new AppConfig(root: $root)
         );
 
         return new self(
@@ -42,10 +46,11 @@ final readonly class PHPNative
     public function gui(): GuiApplication
     {
         $container = $this->kernel->init();
+        $appConfig = $container->get(AppConfig::class);
 
         $application = new GuiApplication(
-            args: $_SERVER['argv'],
             container: $container,
+            appConfig: $appConfig
         );
 
         $container->singleton(Application::class, fn () => $application);

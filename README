@@ -1,0 +1,4 @@
+
+### Static PHP Build
+
+.\bin\spc build "sdl,phar,filter,mbstring,openssl,parallel,iconv,dom,xml,xmlwriter,xmlreader,tokenizer" --build-cli --build-micro --debug -vvv --enable-zts --with-suggested-libs

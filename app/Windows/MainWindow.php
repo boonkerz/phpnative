@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Example\Windows;
+namespace App\Windows;
 
-use PHPNative\Window\BaseWindow;
+use PHPNative\Ui\BaseWindow;
 
+#[Window('')]
 class MainWindow extends BaseWindow
 {
 
