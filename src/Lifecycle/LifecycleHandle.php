@@ -1,22 +1,18 @@
 <?php
 
-namespace PHPNative\Window;
+namespace PHPNative\Lifecycle;
 
 use Attribute;
 use ReflectionMethod;
 
 #[Attribute]
-class WindowHandler
+class LifecycleHandle
 {
-    public string $windowName;
-
     public ReflectionMethod $handler;
 
-    public function setCommandName(string $windowName): self
+    public function __construct(private readonly ?AppState $appState = null)
     {
-        $this->windowName = $windowName;
 
-        return $this;
     }
 
     public function setHandler(ReflectionMethod $handler): self
@@ -29,7 +25,7 @@ class WindowHandler
     public function __serialize(): array
     {
         return [
-            'commandName' => $this->windowName,
+            'appState' => $this->appState,
             'handler_class' => $this->handler->getDeclaringClass()->getName(),
             'handler_method' => $this->handler->getName(),
         ];
@@ -37,7 +33,7 @@ class WindowHandler
 
     public function __unserialize(array $data): void
     {
-        $this->windowName = $data['windowName'];
+        $this->appState = $data['appState'];
         $this->handler = new ReflectionMethod(
             objectOrMethod: $data['handler_class'],
             method: $data['handler_method'],
