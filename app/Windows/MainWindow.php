@@ -3,19 +3,11 @@ declare(strict_types=1);
 
 namespace App\Windows;
 
-use PHPNative\Ui\BaseWindow;
+use App\Controller\AppController;
 
-#[Window('')]
-class MainWindow extends BaseWindow
+#[Window(title: 'MainWindow', id: 'mainwindow', controller: AppController::class)]
+class MainWindow
 {
 
-    public function getTitle(): string
-    {
-        return 'Example Window';
-    }
 
-    public function build(): void
-    {
-        // TODO: Implement build() method.
-    }
 }

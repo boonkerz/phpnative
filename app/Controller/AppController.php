@@ -1,18 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Example\Controller;
+namespace App\Controller;
 
 use PHPNative\Controller\BaseController;
 
-class AppController extends BaseController
+class AppController
 {
-
-    public function init(): void
-    {
-
-
-
-    }
 
 }
