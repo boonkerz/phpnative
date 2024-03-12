@@ -6,7 +6,7 @@ namespace PHPNative\Threads;
 use parallel\Runtime;
 use parallel\Channel;
 
-class App extends Runtime
+class App
 {
 
 }

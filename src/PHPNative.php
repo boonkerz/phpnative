@@ -7,6 +7,7 @@ use PHPNative\Application\Application;
 use PHPNative\Application\GuiApplication;
 use PHPNative\Application\Kernel;
 use PHPNative\Container\Container;
+use PHPNative\Lifecycle\LifecycleConfig;
 
 final readonly class PHPNative
 {

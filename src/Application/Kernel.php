@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace PHPNative\Application;
 
 use PHPNative\AppConfig;
+use PHPNative\Bootstrap\DiscoveryBootstrap;
+use PHPNative\Bootstrap\DiscoveryLocationBootstrap;
 use PHPNative\Container\Container;
 use PHPNative\Container\GenericContainer;
 
@@ -22,9 +24,8 @@ final readonly class Kernel
         $container = $this->createContainer();
 
         $bootstraps = [
-            //DiscoveryLocationBootstrap::class,
-            //ConfigBootstrap::class,
-            //DiscoveryBootstrap::class,
+            DiscoveryLocationBootstrap::class,
+            DiscoveryBootstrap::class,
         ];
 
         foreach ($bootstraps as $bootstrap) {

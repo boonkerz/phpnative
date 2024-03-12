@@ -10,7 +10,10 @@
     "psr-4": {
       "PHPNative\\": "src/",
       "App\\": "app/"
-    }
+    },
+    "files": [
+      "src/functions.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
@@ -28,10 +31,7 @@
     "phpstan/phpstan": "^1.10.0",
     "friendsofphp/php-cs-fixer": "^3.21",
     "phpat/phpat": "^0.10.14",
-    "spaze/phpstan-disallowed-calls": "^3.1",
-    "php-http/mock-client": "^1.6",
-    "aidan-casey/mock-client": "dev-master"
-  },
+    "spaze/phpstan-disallowed-calls": "^3.1"},
   "bin": [
     "phpnative"
   ],

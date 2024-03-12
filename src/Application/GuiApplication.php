@@ -5,6 +5,7 @@ namespace PHPNative\Application;
 use PHPNative\AppConfig;
 use PHPNative\Application\Application;
 use PHPNative\Container\Container;
+use PHPNative\Lifecycle\LifecycleConfig;
 use PHPNative\Loop\OrderedEventLoop;
 use Throwable;
 
@@ -20,9 +21,9 @@ final readonly class GuiApplication implements Application
     public function run(): void
     {
         try {
-            $loop = $this->container->get(OrderedEventLoop::class);
+            $lifeCycleConfig = $this->container->get(LifecycleConfig::class);
 
-            $loop->run();
+            dd("test");
         } catch (Throwable $throwable) {
             if (! $this->appConfig->enableExceptionHandling) {
                 throw $throwable;

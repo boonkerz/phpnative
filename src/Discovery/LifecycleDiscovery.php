@@ -22,6 +22,7 @@ final readonly class LifecycleDiscovery implements Discovery
 
     public function discover(ReflectionClass $class): void
     {
+
         foreach ($class->getMethods(ReflectionMethod::IS_PUBLIC) as $method) {
             $lifeCycle = Attributes::find(LifecycleHandle::class)->in($method)->first();
 
@@ -45,9 +46,9 @@ final readonly class LifecycleDiscovery implements Discovery
 
     public function restoreCache(Container $container): void
     {
-        $commands = unserialize(file_get_contents(self::CACHE_PATH));
+        $handles = unserialize(file_get_contents(self::CACHE_PATH));
 
-        $this->lifecycleConfig->handles = $commands;
+        $this->lifecycleConfig->handles = $handles;
     }
 
     public function destroyCache(): void
