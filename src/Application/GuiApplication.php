@@ -23,7 +23,15 @@ final readonly class GuiApplication implements Application
         try {
             $lifeCycleConfig = $this->container->get(LifecycleConfig::class);
 
-            dd("test");
+            $handler = $lifeCycleConfig->handles[0]->handler;
+
+            $commandClass = $this->container->get($handler->getDeclaringClass()->getName());
+
+            try {
+                $handler->invoke($commandClass);
+            } catch (ArgumentCountError) {
+                $this->handleFailingCommand();
+            }
         } catch (Throwable $throwable) {
             if (! $this->appConfig->enableExceptionHandling) {
                 throw $throwable;

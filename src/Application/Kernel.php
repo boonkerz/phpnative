@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PHPNative\Application;
 
 use PHPNative\AppConfig;
+use PHPNative\Bootstrap\ConfigBootstrap;
 use PHPNative\Bootstrap\DiscoveryBootstrap;
 use PHPNative\Bootstrap\DiscoveryLocationBootstrap;
 use PHPNative\Container\Container;
@@ -25,6 +26,7 @@ final readonly class Kernel
 
         $bootstraps = [
             DiscoveryLocationBootstrap::class,
+            ConfigBootstrap::class,
             DiscoveryBootstrap::class,
         ];
 
