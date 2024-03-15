@@ -50,17 +50,11 @@ class Lifecycle implements WorkerInterface
     public function onUpdate(float $delta): void
     {
         $this->contextCollection->map(fn(Context $context) => $context->update($delta));
-        if ($this->context !== null) {
-            $this->context->update($delta);
-        }
     }
 
     public function onRender(float $delta): void
     {
         $this->contextCollection->map(fn(Context $context) => $context->render($delta));
-        if ($this->context !== null) {
-            $this->context->render($delta);
-        }
     }
 
     public function onPause(): void

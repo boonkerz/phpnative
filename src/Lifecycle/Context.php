@@ -17,4 +17,13 @@ class Context
         $this->window->show();
     }
 
+    public function update(float $delta): void
+    {
+
+    }
+
+    public function render(float $delta): void
+    {
+
+    }
 }

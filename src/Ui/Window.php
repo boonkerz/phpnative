@@ -20,6 +20,7 @@ class Window implements WindowInterface
         $this->windowId = \SDL_CreateWindow($this->title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, $this->width, $this->height, SDL_WINDOW_RESIZABLE);
         $this->rendererId = \SDL_CreateRenderer($this->windowId, 0, SDL_RENDERER_ACCELERATED);
 
+        \SDL_RaiseWindow($this->windowId);
         \SDL_SetRenderDrawColor($this->rendererId, 100, 0, 0, 0);
         \SDL_RenderClear($this->rendererId);
     }

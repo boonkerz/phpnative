@@ -7,6 +7,7 @@ abstract class EventLoop implements LoopInterface
 {
 
     protected bool $running = false;
+    protected bool $paused = false;
 
     private ?WorkerInterface $worker = null;
 
@@ -53,5 +54,19 @@ abstract class EventLoop implements LoopInterface
     public function stop(): void
     {
         $this->running = false;
+    }
+
+    protected function render(float $delta): void
+    {
+        if ($this->worker !== null) {
+            $this->worker->onRender($delta);
+        }
+    }
+
+    protected function update(float $delta): void
+    {
+        if ($this->worker !== null && $this->paused === false) {
+            $this->worker->onUpdate($delta);
+        }
     }
 }

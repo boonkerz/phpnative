@@ -2,6 +2,7 @@
 
 namespace PHPNative\Loop;
 
+use PHPGui\Event\EventType;
 use PHPNative\Loop\EventLoop;
 
 class OrderedEventLoop extends EventLoop
@@ -27,13 +28,17 @@ class OrderedEventLoop extends EventLoop
             $now = \microtime(true);
 
             if (($delta = $this->updates->next($now)) !== null) {
-                //$this->update($delta);
+                $this->update($delta);
             }
 
             if (($delta = $this->render->next($now)) !== null) {
-                //$this->render($delta);
+                $this->render($delta);
             }
 
+            /*while ($event = $this->driver->pollEvent()) {
+                if($event->getType() === EventType::NOOP) break;
+                $this->poll($event);
+            }*/
         }
     }
 }
