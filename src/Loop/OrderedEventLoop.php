@@ -2,7 +2,6 @@
 
 namespace PHPNative\Loop;
 
-use PHPGui\Event\EventType;
 use PHPNative\Loop\EventLoop;
 
 class OrderedEventLoop extends EventLoop
@@ -34,11 +33,6 @@ class OrderedEventLoop extends EventLoop
             if (($delta = $this->render->next($now)) !== null) {
                 $this->render($delta);
             }
-
-            /*while ($event = $this->driver->pollEvent()) {
-                if($event->getType() === EventType::NOOP) break;
-                $this->poll($event);
-            }*/
         }
     }
 }

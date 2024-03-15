@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace PHPNative\Container;
 
-
 use ReflectionClass;
 use ReflectionFunction;
 use ReflectionIntersectionType;
@@ -152,7 +151,6 @@ final class GenericContainer implements Container
                 $initializer instanceof Initializer => $initializer->initialize($this),
                 $initializer instanceof DynamicInitializer => $initializer->initialize($className, $this),
             };
-
             // Check whether the initializer's result should be registered as a singleton
             if (attribute(Singleton::class)->in($initializer::class)->first() !== null) {
                 $this->singleton($className, fn () => $object);

@@ -1,1 +1,1 @@
-a:2:{i:0;s:38:"PHPNative\Discovery\DiscoveryDiscovery";i:1;s:38:"PHPNative\Discovery\LifecycleDiscovery";}
+a:3:{i:0;s:38:"PHPNative\Discovery\DiscoveryDiscovery";i:1;s:40:"PHPNative\Discovery\InitializerDiscovery";i:2;s:38:"PHPNative\Discovery\LifecycleDiscovery";}

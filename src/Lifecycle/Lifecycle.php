@@ -8,7 +8,6 @@ use PHPNative\Loop\OrderedEventLoop;
 use PHPNative\Loop\WorkerInterface;
 use PHPNative\Ui\Window;
 
-#[Singleton]
 class Lifecycle implements WorkerInterface
 {
 

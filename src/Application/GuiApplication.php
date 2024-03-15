@@ -15,7 +15,7 @@ final readonly class GuiApplication implements Application
 
     public function __construct(
         private Container $container,
-        private AppConfig $appConfig,
+        private AppConfig $appConfig
     ) {
     }
 

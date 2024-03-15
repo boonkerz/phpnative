@@ -2,8 +2,10 @@
 
 namespace PHPNative\Lifecycle;
 
+use PHPNative\Container\Singleton;
 use PHPNative\Support\TypedCollection;
 
+#[Singleton]
 class ContextCollection extends TypedCollection
 {
 

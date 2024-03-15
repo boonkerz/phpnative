@@ -1,0 +1,1 @@
+a:1:{s:29:"PHPNative\Lifecycle\Lifecycle";s:40:"PHPNative\Lifecycle\LifecycleInitializer";}

@@ -6,6 +6,7 @@ class Window implements WindowInterface
 {
     private ?\SDL_Window $windowId = null;
     private $rendererId = null;
+    private \SDL_Event $event;
 
     public function __construct(private int $width, private int $height,
                                 private int $x, private int $y, private string $title,
@@ -19,10 +20,8 @@ class Window implements WindowInterface
         \SDL_Init(SDL_INIT_VIDEO);
         $this->windowId = \SDL_CreateWindow($this->title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, $this->width, $this->height, SDL_WINDOW_RESIZABLE);
         $this->rendererId = \SDL_CreateRenderer($this->windowId, 0, SDL_RENDERER_ACCELERATED);
-
+        $this->event = new \SDL_Event();
         \SDL_RaiseWindow($this->windowId);
-        \SDL_SetRenderDrawColor($this->rendererId, 100, 0, 0, 0);
-        \SDL_RenderClear($this->rendererId);
     }
 
     public function close(): void
@@ -32,13 +31,23 @@ class Window implements WindowInterface
         \SDL_Quit();
     }
 
-    private function render(): void
+    public function render(): void
     {
-        \SDL_SetRenderDrawColor($this->rendererId, 255, 0, 0, 255);
+        \SDL_SetRenderDrawColor($this->rendererId, 255, 255,255,255);
+        \SDL_RenderClear($this->rendererId);
         for ($i = 0; $i < 800; ++$i) {
             \SDL_RenderPoint($this->rendererId, $i, $i);
         }
         \SDL_RenderPresent($this->rendererId);
+    }
+
+    public function pollEvent(): int
+    {
+        \SDL_PollEvent($this->event);
+        return match($this->event->type) {
+            SDL_EVENT_QUIT => 99,
+            default => 1
+        };
     }
 
     public function hide(): void

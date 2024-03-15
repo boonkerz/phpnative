@@ -18,6 +18,9 @@ abstract class EventLoop implements LoopInterface
 
     public function run(int $frameRate = self::DEFAULT_FRAME_RATE, int $updateRate = self::DEFAULT_UPDATE_RATE): void
     {
+
+        $this->paused = false;
+
         if ($this->running) {
             return;
         }
