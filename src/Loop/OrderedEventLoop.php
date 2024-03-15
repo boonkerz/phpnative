@@ -36,19 +36,4 @@ class OrderedEventLoop extends EventLoop
 
         }
     }
-
-    public function pause(): void
-    {
-        // TODO: Implement pause() method.
-    }
-
-    public function resume(): void
-    {
-        // TODO: Implement resume() method.
-    }
-
-    public function stop(): void
-    {
-        // TODO: Implement stop() method.
-    }
 }

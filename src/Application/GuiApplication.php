@@ -5,6 +5,7 @@ namespace PHPNative\Application;
 use PHPNative\AppConfig;
 use PHPNative\Application\Application;
 use PHPNative\Container\Container;
+use PHPNative\Lifecycle\Lifecycle;
 use PHPNative\Lifecycle\LifecycleConfig;
 use PHPNative\Loop\OrderedEventLoop;
 use Throwable;
@@ -27,8 +28,11 @@ final readonly class GuiApplication implements Application
 
             $commandClass = $this->container->get($handler->getDeclaringClass()->getName());
 
+            $lifeCycle = $this->container->get(Lifecycle::class);
+
             try {
                 $handler->invoke($commandClass);
+                $lifeCycle->run();
             } catch (ArgumentCountError) {
                 $this->handleFailingCommand();
             }

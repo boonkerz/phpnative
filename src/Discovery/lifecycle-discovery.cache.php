@@ -1,1 +1,1 @@
-a:1:{i:0;O:35:"PHPNative\Lifecycle\LifecycleHandle":3:{s:8:"appState";E:35:"PHPNative\Lifecycle\AppState:onInit";s:13:"handler_class";s:28:"App\Controller\AppController";s:14:"handler_method";s:4:"init";}}
+a:1:{i:0;O:35:"PHPNative\Lifecycle\LifecycleHandle":3:{s:8:"appState";E:35:"PHPNative\Lifecycle\AppState:onInit";s:13:"handler_class";s:31:"App\GuiController\AppController";s:14:"handler_method";s:4:"init";}}

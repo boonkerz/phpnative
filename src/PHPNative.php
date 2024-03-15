@@ -7,6 +7,7 @@ use PHPNative\Application\Application;
 use PHPNative\Application\GuiApplication;
 use PHPNative\Application\Kernel;
 use PHPNative\Container\Container;
+use PHPNative\Exceptions\ConsoleExceptionHandler;
 use PHPNative\Lifecycle\LifecycleConfig;
 
 final readonly class PHPNative
@@ -56,6 +57,7 @@ final readonly class PHPNative
 
         $container->singleton(Application::class, fn () => $application);
 
+        $appConfig->exceptionHandlers[] = $container->get(ConsoleExceptionHandler::class);
         return $application;
     }
 

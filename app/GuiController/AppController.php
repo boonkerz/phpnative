@@ -1,18 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Controller;
+namespace App\GuiController;
 
 use App\Windows\MainWindow;
-use PHPNative\Controller\BaseController;
 use PHPNative\Lifecycle\AppState;
+use PHPNative\Lifecycle\Lifecycle;
 use PHPNative\Lifecycle\LifecycleHandle;
-use PHPNative\Ui\Factory;
 
 
 class AppController
 {
-    public function __construct(private Factory $uiFactory)
+    public function __construct(private Lifecycle $lifecycle)
     {
     }
 
@@ -20,7 +19,9 @@ class AppController
     #[LifecycleHandle(appState: AppState::onInit)]
     public function init(): void
     {
-        $this->uiFactory->open(MainWindow::class);
+        $window = new MainWindow(400,400,0,0, "PHPNative Example", "p-6");
+
+        $this->lifecycle->show($window);
     }
 
 

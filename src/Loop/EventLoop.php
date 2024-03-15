@@ -8,6 +8,13 @@ abstract class EventLoop implements LoopInterface
 
     protected bool $running = false;
 
+    private ?WorkerInterface $worker = null;
+
+    public function use(?WorkerInterface $worker): void
+    {
+        $this->worker = $worker;
+    }
+
     public function run(int $frameRate = self::DEFAULT_FRAME_RATE, int $updateRate = self::DEFAULT_UPDATE_RATE): void
     {
         if ($this->running) {
@@ -25,4 +32,26 @@ abstract class EventLoop implements LoopInterface
     }
 
     abstract protected function execute(int $frameRate, int $updateRate): void;
+
+    public function pause(): void
+    {
+        if ($this->paused === false && $this->worker !== null) {
+            $this->worker->onPause();
+        }
+
+        $this->paused = true;
+    }
+
+    public function resume(): void
+    {
+        if ($this->paused === true && $this->worker !== null) {
+            $this->worker->onResume();
+        }
+
+        $this->paused = false;
+    }
+    public function stop(): void
+    {
+        $this->running = false;
+    }
 }

@@ -17,21 +17,10 @@ class Factory
         $mainwindow = $this->container->get($windowClass);
 
 
-        \SDL_Init(SDL_INIT_VIDEO);
-        $window = \SDL_CreateWindow("Drawing points on screen", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_RESIZABLE);
 
-        $renderer = \SDL_CreateRenderer($window, 0, SDL_RENDERER_ACCELERATED);
-
-// Clear screen
-        SDL_SetRenderDrawColor($renderer, 100, 0, 0, 0);
-        SDL_RenderClear($renderer);
 
 // Draw line
-        SDL_SetRenderDrawColor($renderer, 255, 0, 0, 255);
-        for ($i = 0; $i < 800; ++$i) {
-            SDL_RenderPoint($renderer, $i, $i);
-        }
-        SDL_RenderPresent($renderer);
+
 // Wait for quit event
         $event = new \SDL_Event();
 
@@ -42,8 +31,6 @@ class Factory
             }
         }
 
-        SDL_DestroyRenderer($renderer);
-        SDL_DestroyWindow($window);
-        SDL_Quit();
+
     }
 }
