@@ -2,7 +2,7 @@
 
 namespace PHPNative\Loop;
 
-use PHPNative\Loop\EventLoop;
+use PHPNative\Event\EventType;
 
 class OrderedEventLoop extends EventLoop
 {
@@ -11,7 +11,7 @@ class OrderedEventLoop extends EventLoop
 
     public Timer $updates;
 
-    public function __construct()
+    public function __construct(private \PHPNative\Driver\Event $event)
     {
 
         $this->render = new Timer(self::DEFAULT_FRAME_RATE);
@@ -34,7 +34,8 @@ class OrderedEventLoop extends EventLoop
                 $this->render($delta);
             }
 
-            while ($event = $this->pollEvent()) {
+            while ($event = $this->event->pollEvent()) {
+                if($event->getType() == EventType::NOOP) break;
                 $this->poll($event);
             }
         }

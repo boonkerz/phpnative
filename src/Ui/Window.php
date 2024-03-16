@@ -9,7 +9,6 @@ class Window implements WindowInterface
 {
     private ?\SDL_Window $windowId = null;
     private $rendererId = null;
-    private \SDL_Event $event;
 
     public function __construct(private int $width, private int $height,
                                 private int $x, private int $y, private string $title,
@@ -23,7 +22,6 @@ class Window implements WindowInterface
         \SDL_Init(SDL_INIT_VIDEO);
         $this->windowId = \SDL_CreateWindow($this->title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, $this->width, $this->height, SDL_WINDOW_RESIZABLE);
         $this->rendererId = \SDL_CreateRenderer($this->windowId, 0, SDL_RENDERER_ACCELERATED);
-        $this->event = new \SDL_Event();
         \SDL_RaiseWindow($this->windowId);
     }
 
@@ -42,15 +40,6 @@ class Window implements WindowInterface
             \SDL_RenderPoint($this->rendererId, $i, $i);
         }
         \SDL_RenderPresent($this->rendererId);
-    }
-
-    public function pollEvent(): Event
-    {
-        \SDL_PollEvent($this->event);
-        return match($this->event->type) {
-            SDL_EVENT_QUIT => new Event(EventType::QUIT),
-            default => new Event(EventType::NOOP)
-        };
     }
 
     public function hide(): void

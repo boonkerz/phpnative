@@ -75,10 +75,10 @@ abstract class EventLoop implements LoopInterface
         }
     }
 
-    protected function pollEvent(): Event
+    protected function poll(Event $event): void
     {
         if ($this->worker !== null && $this->paused === false) {
-            $this->worker->pollEvent();
+            $this->worker->onEvent($event);
         }
     }
 

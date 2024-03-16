@@ -1,1 +1,1 @@
-a:1:{s:29:"PHPNative\Lifecycle\Lifecycle";s:40:"PHPNative\Lifecycle\LifecycleInitializer";}
+a:2:{s:22:"PHPNative\Driver\Event";s:33:"PHPNative\Driver\EventInitializer";s:29:"PHPNative\Lifecycle\Lifecycle";s:40:"PHPNative\Lifecycle\LifecycleInitializer";}

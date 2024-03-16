@@ -5,6 +5,7 @@ namespace PHPNative\Lifecycle;
 use PHPNative\Container\Container;
 use PHPNative\Container\Singleton;
 use PHPNative\Event\Event;
+use PHPNative\Event\EventType;
 use PHPNative\Loop\OrderedEventLoop;
 use PHPNative\Loop\WorkerInterface;
 use PHPNative\Ui\Window;
@@ -57,6 +58,13 @@ class Lifecycle implements WorkerInterface
         $this->contextCollection->map(fn(Context $context) => $context->render($delta));
     }
 
+    public function onEvent(Event $event): void
+    {
+        if($event->getType() === EventType::QUIT) {
+            $this->loop->stop();
+        }
+    }
+
     public function onPause(): void
     {
         if ($this->context !== null) {
@@ -69,10 +77,5 @@ class Lifecycle implements WorkerInterface
         if ($this->context !== null) {
             $this->context->resume();
         }
-    }
-
-    public function pollEvent(): Event
-    {
-        $this->contextCollection->map(fn(Context $context) => $context->render($delta));
     }
 }
