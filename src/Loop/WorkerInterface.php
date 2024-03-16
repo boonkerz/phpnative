@@ -2,6 +2,8 @@
 
 namespace PHPNative\Loop;
 
+use PHPNative\Event\Event;
+
 interface WorkerInterface
 {
     public function onUpdate(float $delta): void;
@@ -11,4 +13,6 @@ interface WorkerInterface
     public function onPause(): void;
 
     public function onResume(): void;
+
+    public function pollEvent(): Event;
 }

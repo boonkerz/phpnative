@@ -33,6 +33,10 @@ class OrderedEventLoop extends EventLoop
             if (($delta = $this->render->next($now)) !== null) {
                 $this->render($delta);
             }
+
+            while ($event = $this->pollEvent()) {
+                $this->poll($event);
+            }
         }
     }
 }

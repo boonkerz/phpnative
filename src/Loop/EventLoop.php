@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace PHPNative\Loop;
 
+use PHPNative\Event\Event;
+
 abstract class EventLoop implements LoopInterface
 {
 
@@ -72,4 +74,12 @@ abstract class EventLoop implements LoopInterface
             $this->worker->onUpdate($delta);
         }
     }
+
+    protected function pollEvent(): Event
+    {
+        if ($this->worker !== null && $this->paused === false) {
+            $this->worker->pollEvent();
+        }
+    }
+
 }

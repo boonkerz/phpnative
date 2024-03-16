@@ -2,6 +2,9 @@
 
 namespace PHPNative\Ui;
 
+use PHPNative\Event\Event;
+use PHPNative\Event\EventType;
+
 class Window implements WindowInterface
 {
     private ?\SDL_Window $windowId = null;
@@ -41,12 +44,12 @@ class Window implements WindowInterface
         \SDL_RenderPresent($this->rendererId);
     }
 
-    public function pollEvent(): int
+    public function pollEvent(): Event
     {
         \SDL_PollEvent($this->event);
         return match($this->event->type) {
-            SDL_EVENT_QUIT => 99,
-            default => 1
+            SDL_EVENT_QUIT => new Event(EventType::QUIT),
+            default => new Event(EventType::NOOP)
         };
     }
 
