@@ -35,7 +35,7 @@ class Lifecycle implements WorkerInterface
 
         $context = $this->container->get(
             Context::class,
-            window: $window
+            driver: new \PHPNative\Driver\Window($window)
         );
 
         $context->show();

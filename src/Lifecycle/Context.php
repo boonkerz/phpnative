@@ -2,19 +2,20 @@
 
 namespace PHPNative\Lifecycle;
 
+use PHPNative\Driver\Window;
 use PHPNative\Ui\WindowInterface;
 
 class Context
 {
 
-    public function __construct(private WindowInterface $window)
+    public function __construct(private Window $driver)
     {
 
     }
 
     public function show(): void
     {
-        $this->window->show();
+        $this->driver->show();
     }
 
     public function update(float $delta): void
@@ -24,6 +25,6 @@ class Context
 
     public function render(float $delta): void
     {
-        $this->window->render();
+        $this->driver->render();
     }
 }

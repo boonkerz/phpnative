@@ -19,7 +19,7 @@ class AppController
     #[LifecycleHandle(appState: AppState::onInit)]
     public function init(): void
     {
-        $window = new MainWindow(400,400,0,0, "PHPNative Example", "p-6");
+        $window = new MainWindow(800,400,100,100, "PHPNative Example", "m-10 bg-green-600 sm:bg-red-600");
 
         $this->lifecycle->show($window);
     }
