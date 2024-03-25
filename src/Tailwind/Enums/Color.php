@@ -72,7 +72,7 @@ enum Color: string
 
     case ZINC_900 = '#18181b';
 
-    case NEUTRAL_50 = self::ZINC_50->value;
+    case NEUTRAL_50 = '#fafafaa';
 
     case NEUTRAL_100 = '#f5f5f5';
 
@@ -148,7 +148,7 @@ enum Color: string
 
     case ORANGE_400 = '#fb923c';
 
-    case ORANGE_500 = self::ORANGE->value;
+    case ORANGE_500 = '#f973160';
 
     case ORANGE_600 = '#ea580c';
 
@@ -477,4 +477,9 @@ enum Color: string
     case MAGENTA = 'magenta';
 
     case BRIGHTMAGENTA = 'bright-magenta';
+
+    public static function fromName(array|false|string|null $colorConstant)
+    {
+        return constant("self::$colorConstant");
+    }
 }

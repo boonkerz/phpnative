@@ -24,5 +24,8 @@ class AppController
         $this->lifecycle->show($window);
     }
 
+    private function exit(): void
+    {
 
+    }
 }

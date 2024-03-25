@@ -3,6 +3,9 @@
 namespace PHPNative\Driver;
 
 
+use PHPNative\Tailwind\Actions\StyleToMethod;
+use PHPNative\Tailwind\ValueObjects\Styles;
+
 class Window
 {
     private ?\SDL_Window $windowId = null;
@@ -18,6 +21,10 @@ class Window
         $this->windowId = \SDL_CreateWindow($this->window->title, $this->window->x, $this->window->y, $this->window->width, $this->window->height, SDL_WINDOW_RESIZABLE);
         $this->rendererPtr = \SDL_CreateRenderer($this->windowId, 0, SDL_RENDERER_ACCELERATED);
         \SDL_RaiseWindow($this->windowId);
+
+        $styles = new Styles();
+        StyleToMethod::multiple(styles: $styles, stylesString: $this->window->style);
+        dd($styles);
     }
 
     public function close(): void
